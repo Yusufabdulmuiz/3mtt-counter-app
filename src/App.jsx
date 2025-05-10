@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import './App.css';
 
 const App = () => {
   const [count, setCount] = useState(0);
-  const limit = 10;
+  const limit = 35;
 
   const increment = () => {
     if (count < limit) setCount(count + 1);
@@ -13,51 +14,23 @@ const App = () => {
   };
 
   return (
-    <div style={styles.container}>
-      <h1 style={styles.heading}>Click Counter</h1>
-      <p style={styles.count}>Count: {count}</p>
-      <div style={styles.buttonContainer}>
-        <button style={styles.button} onClick={increment}>
+    <div className="container">
+      <h1 className="heading">Click Counter</h1>
+      <p className="count">Count: {count}</p>
+
+      <div className="button-container">
+        <button className="button increase" onClick={increment}>
           Increase
         </button>
-        <button style={styles.button} onClick={decrement}>
+        <button className="button decrease" onClick={decrement}>
           Decrease
         </button>
       </div>
-      {count === limit && <p style={styles.limitText}>You've reached the limit!</p>}
+
+      {count === limit && <p className="message limit">You've reached the limit!</p>}
+      {count === 0 && <p className="message zero">Count cannot go below zero</p>}
     </div>
   );
 };
 
-// Simple inline styling
-const styles = {
-  container: {
-    textAlign: "center",
-    marginTop: "50px",
-    fontFamily: "Arial, sans-serif"
-  },
-  heading: {
-    fontSize: "2rem"
-  },
-  count: {
-    fontSize: "1.5rem",
-    margin: "20px 0"
-  },
-  buttonContainer: {
-    display: "flex",
-    justifyContent: "center",
-    gap: "10px"
-  },
-  button: {
-    padding: "10px 20px",
-    fontSize: "1rem",
-    cursor: "pointer"
-  },
-  limitText: {
-    color: "red",
-    marginTop: "20px"
-  }
-};
-
 export default App;
-     
